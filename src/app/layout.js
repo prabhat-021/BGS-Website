@@ -4,13 +4,9 @@ import "./globals.css";
 import useSmoothScroll from "@/components/addonFunctions/UseSmoothScroll";
 import ScrollToTopButton from "@/components/addonFunctions/Scroll-top";
 import MouseFollower from "@/components/addonFunctions/Mousefollower";
-<<<<<<< HEAD
-// import  navbar from "@/components/header/navbar";
-import Navbar from "@/components/header/navbar";
-=======
 
 import Footer from "@/components/footer-section/footer";
->>>>>>> ca365f3b54417b57fd59c98f133a2f5db0f75514
+import Navbar from "@/components/header/navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
