@@ -1,27 +1,40 @@
-"use client"; // Ensures it runs only on the client side (important for Next.js)
+"use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useMouseFollower } from "@/hooks/use-mouse-follower";
 
-const MouseFollower = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const moveCursor = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, []);
+export default function MouseFollower({
+  normalSize = "30px",
+  hoverSize = "80px",
+  color = "white",
+  mixBlendMode = "difference",
+  pulseOnHover = true,
+}) {
+  const { springX, springY, isHoveringText } = useMouseFollower();
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 bg-red-400 rounded-full pointer-events-none z-50"
-      animate={{ x: position.x - 8, y: position.y - 8 }} // Centering the dot
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      className="pointer-events-none fixed z-50 rounded-full"
+      style={{
+        width: isHoveringText ? hoverSize : normalSize,
+        height: isHoveringText ? hoverSize : normalSize,
+        backgroundColor: color,
+        mixBlendMode: mixBlendMode,
+        x: springX,
+        y: springY,
+        translateX: "-50%",
+        translateY: "-50%",
+        transition: "width 0.3s ease, height 0.3s ease",
+      }}
+      animate={{
+        scale: pulseOnHover && isHoveringText ? [1, 1.2, 1] : 1,
+      }}
+      transition={{
+        duration: 1.5,
+        ease: "easeInOut",
+        repeat: pulseOnHover && isHoveringText ? Number.POSITIVE_INFINITY : 0,
+      }}
+      aria-hidden="true"
     />
   );
-};
-
-export default MouseFollower;
+}
