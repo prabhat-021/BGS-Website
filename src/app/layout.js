@@ -5,6 +5,7 @@ import useSmoothScroll from "@/components/addonFunctions/UseSmoothScroll";
 import ScrollToTopButton from "@/components/addonFunctions/Scroll-top";
 import MouseFollower from "@/components/addonFunctions/Mousefollower";
 
+import Footer from "@/components/footer-section/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         <MouseFollower />
         <ScrollToTopButton />
         {children}
+        <Footer/>
       </body>
     </html>
   );
