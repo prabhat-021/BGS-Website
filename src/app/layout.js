@@ -4,7 +4,8 @@ import "./globals.css";
 import useSmoothScroll from "@/components/addonFunctions/UseSmoothScroll";
 import ScrollToTopButton from "@/components/addonFunctions/Scroll-top";
 import MouseFollower from "@/components/addonFunctions/Mousefollower";
-
+// import  navbar from "@/components/header/navbar";
+import Navbar from "@/components/header/navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <Navbar/>
         <MouseFollower />
         <ScrollToTopButton />
         {children}

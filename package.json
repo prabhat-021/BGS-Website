@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.8",
     "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.30.0",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.483.0",
+    "my-app": "file:",
     "next": "^15.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

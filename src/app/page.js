@@ -6,10 +6,12 @@ import Overview from "@/components/homePage/homeMidSection2/Overview";
 import Services from "@/components/homePage/homeMidSection2/services";
 import Hero from "@/components/hero-section/hero";
 import Footer from "@/components/footer-section/footer";
+// import Navbar from "@/components/header/navbar";
 export default function Home() {
   return (
     <div>
       {/* Section 1 Home Page */}
+      {/* <Navbar/> */}
           <Hero />
       <div id="section1" className=" min-h-screen bg-gray-200 ">
         <div className="md:flex justify-center mb-2 ">
