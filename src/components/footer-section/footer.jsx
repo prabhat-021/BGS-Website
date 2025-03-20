@@ -61,9 +61,9 @@ export default function Footer() {
         </motion.button>
       </div>
       <motion.div className="py-16 container mx-auto px-6 md:px-12" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-12">
           <motion.div variants={itemVariants} className="lg:col-span-5 space-y-6">
-            <h2 className="text-4xl font-light">OPUS</h2>
+            <h2 className="text-4xl font-light">BRIDGE GROUP SOLUTIONS</h2>
             <p className="text-gray-400 max-w-md text-sm leading-relaxed">
               We help businesses succeed in the digital space by creating beautiful web experiences.
             </p>
@@ -79,7 +79,7 @@ export default function Footer() {
           </motion.div>
           <motion.div variants={itemVariants} className="lg:col-span-5 space-y-6 md:text-right">
             <p className="text-gray-400 text-sm">You can also email us at:</p>
-            <motion.p className="text-xl font-light" whileHover={{ scale: 1.02 }}>contact@opus.com</motion.p>
+            <motion.p className="text-xl font-light" whileHover={{ scale: 1.02 }}>contact@bridgegroupsolutions.com</motion.p>
             <div className="flex flex-wrap justify-start md:justify-end gap-8 pt-6">
               {["Home", "Projects", "Blog", "About Us", "Contact"].map((item, index) => (
                 <Link key={index} href="#" className="relative group">
@@ -91,7 +91,7 @@ export default function Footer() {
           </motion.div>
         </div>
         <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-white/10">
-          <p className="text-gray-500 text-xs">©{new Date().getFullYear()} Opus. All Rights Reserved.</p>
+          <p className="text-gray-500 text-xs">©{new Date().getFullYear()} bridgegroupsolutions. All Rights Reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             {["Privacy Policy", "Terms of Service"].map((item, index) => (
               <Link key={index} href="#" className="relative group">

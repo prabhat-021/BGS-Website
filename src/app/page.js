@@ -5,8 +5,11 @@ import JoinUsCard from "@/components/homePage/homeMidSection2/Features/joinus";
 import Overview from "@/components/homePage/homeMidSection2/Overview";
 import Services from "@/components/homePage/homeMidSection2/services";
 import Hero from "@/components/hero-section/hero";
+<<<<<<< HEAD
 import Footer from "@/components/footer-section/footer";
 // import Navbar from "@/components/header/navbar";
+=======
+>>>>>>> ca365f3b54417b57fd59c98f133a2f5db0f75514
 export default function Home() {
   return (
     <div>
@@ -26,7 +29,7 @@ export default function Home() {
         <CenterHeading heading="About Us" />
         <Overview />
       </div>
-      <Footer/>
+    
     </div>
   );
 }
