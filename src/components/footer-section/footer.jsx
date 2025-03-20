@@ -61,7 +61,7 @@ export default function Footer() {
         </motion.button>
       </div>
       <motion.div className="py-16 container mx-auto px-6 md:px-12" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-12">
           <motion.div variants={itemVariants} className="lg:col-span-5 space-y-6">
             <h2 className="text-4xl font-light">BRIDGE GROUP SOLUTIONS</h2>
             <p className="text-gray-400 max-w-md text-sm leading-relaxed">
