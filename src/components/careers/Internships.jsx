@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { IconArrowDown, IconArrowUp } from "@tabler/icons-react";
-import { internshipsData } from "@/utils/data/internshipsData";
+import { internshipsData } from "@/lib/data/internshipsData";
 
 const Internships = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
