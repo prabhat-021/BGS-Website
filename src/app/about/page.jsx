@@ -54,7 +54,10 @@ const About = () => {
             </div>
             {hoveredIndex === index && (
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-6 text-center max-w-[300px] animate-[fadeIn_0.3s_ease_forwards]">
-                <p className="text-gray-800 text-base leading-relaxed">{item.content}</p>
+                <div className="backdrop-blur-md bg-[#5780d0]/20 border border-white/40 rounded-xl shadow-lg p-4 relative">
+                  <p className="text-gray-800 text-base leading-relaxed">{item.content}</p>
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 rotate-45 backdrop-blur-md bg-[#5780d0]/20 border-t border-l border-white/40"></div>
+                </div>
               </div>
             )}
           </div>
@@ -62,47 +65,47 @@ const About = () => {
       </div>
 
       {/* Partners Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center py-16 gap-8 md:gap-16 mt-16">
+      <div className="flex flex-col md:flex-row justify-between items-center py-16 gap-8 md:gap-16 mt-8 mb-24">
         <div className="flex-1 max-w-[500px]">
-          <h3 className="text-[#4040ff] text-xl mb-4 font-medium">Partners</h3>
-          <h2 className="text-3xl font-medium leading-tight mb-6 text-gray-800">Strategic Technology Partners</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <h3 className="text-[#4040ff] text-2xl mb-4 font-medium">Partners</h3>
+          <h2 className="text-4xl font-medium leading-tight mb-6 text-gray-800">Strategic Technology Partners</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
             We collaborate with industry-leading technology providers to deliver cutting-edge solutions that drive
             innovation and digital transformation for our clients.
           </p>
         </div>
         <div className="flex-1">
           <div className="grid grid-cols-2 gap-6 md:gap-8 items-center justify-items-center">
-            <Image src="/about/1_logo.png" alt="Microsoft" width={180} height={100} className="transition-transform duration-300 hover:scale-105" />
-            <Image src="/about/2_logo.webp" alt="AWS" width={180} height={100} className="transition-transform duration-300 hover:scale-105" />
-            <Image src="/about/3_logo.png" alt="AWS" width={180} height={100} className="transition-transform duration-300 hover:scale-105" />
-            <Image src="/about/4_logo.png" alt="AWS" width={180} height={100} className="transition-transform duration-300 hover:scale-105" />
-            <Image src="/about/5_logo.png" alt="AWS" width={180} height={100} className="transition-transform duration-300 hover:scale-105" />
+            <Image src="/about/1_logo.png" alt="Microsoft" width={100} height={60} className="transition-transform duration-300 hover:scale-105" />
+            <Image src="/about/2_logo.webp" alt="AWS" width={100} height={60} className="transition-transform duration-300 hover:scale-105" />
+            <Image src="/about/3_logo.png" alt="AWS" width={100} height={60} className="transition-transform duration-300 hover:scale-105" />
+            <Image src="/about/4_logo.png" alt="AWS" width={100} height={60} className="transition-transform duration-300 hover:scale-105" />
+            <Image src="/about/5_logo.png" alt="AWS" width={100} height={60} className="transition-transform duration-300 hover:scale-105" />
           </div>
         </div>
       </div>
 
       {/* Core Values Section */}
-      <div className="py-24 bg-[#ededed] text-white my-16 -mx-8">
+      <div className="py-24 bg-[#ededed] text-white -mt-16 -mx-8">
         <div className="max-w-[1200px] mx-auto px-8">
-          <h3 className="text-[#4040ff] text-xl mb-4 font-medium">Our Values</h3>
-          <h2 className="text-3xl font-medium leading-tight mb-12 text-black opacity-90">Core Values</h2>
+          <h3 className="text-[#4040ff] text-2xl mb-4 font-medium">Our Values</h3>
+          <h2 className="text-4xl font-medium leading-tight mb-12 text-black opacity-90">Core Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="relative before:content-[''] before:absolute before:left-0 before:top-[-10px] before:w-10 before:h-0.5 before:bg-[#4040ff]">
-              <h3 className="text-2xl text-black opacity-90 mb-4 font-medium">Innovation</h3>
-              <p className="text-black opacity-70 leading-relaxed">
+              <h3 className="text-3xl text-black opacity-90 mb-4 font-medium">Innovation</h3>
+              <p className="text-xl text-black opacity-70 leading-relaxed">
                 We constantly seek new and better ways to solve problems and create value for our clients.
               </p>
             </div>
             <div className="relative before:content-[''] before:absolute before:left-0 before:top-[-10px] before:w-10 before:h-0.5 before:bg-[#4040ff]">
-              <h3 className="text-2xl text-black opacity-90 mb-4 font-medium">Excellence</h3>
-              <p className="text-black opacity-70 leading-relaxed">
+              <h3 className="text-3xl text-black opacity-90 mb-4 font-medium">Excellence</h3>
+              <p className="text-xl text-black opacity-70 leading-relaxed">
                 We strive for excellence in everything we do, delivering high-quality solutions that exceed expectations.
               </p>
             </div>
             <div className="relative before:content-[''] before:absolute before:left-0 before:top-[-10px] before:w-10 before:h-0.5 before:bg-[#4040ff]">
-              <h3 className="text-2xl text-black opacity-90 mb-4 font-medium">Integrity</h3>
-              <p className="text-black opacity-70 leading-relaxed">
+              <h3 className="text-3xl text-black opacity-90 mb-4 font-medium">Integrity</h3>
+              <p className="text-xl text-black opacity-70 leading-relaxed">
                 We conduct our business with honesty, transparency, and ethical principles at all times.
               </p>
             </div>

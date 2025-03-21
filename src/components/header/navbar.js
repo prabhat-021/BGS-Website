@@ -111,7 +111,7 @@ export default function Navbar() {
           alignItems: 'center',
           py: 2,
           px: 4,
-          backgroundColor: visible ? '#1C1C1C' : 'transparent',
+          backgroundColor: visible ? '#3A3A3A' : 'transparent',
           borderRadius: '50px',
           transition: 'all 0.3s ease',
         }}
