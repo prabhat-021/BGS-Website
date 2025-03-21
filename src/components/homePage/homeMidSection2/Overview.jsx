@@ -1,4 +1,4 @@
-import { overviewData } from "@/utils/data/OverviewData";
+import { overviewData } from "@/lib/data/OverviewData";
 import ScrollParagraph from "./scroll-paragraph";
 import ScrollTextAnimation from "./scroll-text-animation";
 

@@ -20,7 +20,6 @@ const geistMono = Geist_Mono({
 
 
 export default function RootLayout({ children }) {
-  // useSmoothScroll();
   return (
     <html lang="en">
       <head>

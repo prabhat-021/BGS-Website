@@ -1,4 +1,4 @@
-import { serviceData } from "@/utils/data/serviceData";
+import { serviceData } from "@/lib/data/serviceData";
 import ServiceCard from "./service-card";
 
 const Services = () => {
