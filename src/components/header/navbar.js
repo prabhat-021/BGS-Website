@@ -3,12 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 
 const navItems = [
@@ -18,11 +13,11 @@ const navItems = [
     label: "Outsourcing",
     dropdown: [
       { label: "ERP & Customized Software", href: "/Outsourcing/ERP" },
-      { label: "Software Testing", href: "/Outsourcing/Testing" },
-    ],
+      { label: "Software Testing", href: "/Outsourcing/Testing" }
+    ]
   },
   { label: "Investing", href: "/" },
-  { label: "Careers", href: "/careers" },
+  { label: "Careers", href: "/" },
   { label: "Gallery", href: "/" },
 ];
 
@@ -66,11 +61,10 @@ export default function MainNav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? "py-1.5 sm:py-2 md:py-3 bg-black/90 backdrop-blur-lg border-b border-white/10"
-            : "py-2 sm:py-3 md:py-4 bg-black border-b border-white/5"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
+          ? "py-1.5 sm:py-2 md:py-3 bg-black/90 backdrop-blur-lg border-b border-white/10"
+          : "py-2 sm:py-3 md:py-4 bg-black border-b border-white/5"
+          }`}
       >
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-12">
           <div className="flex items-center justify-between">
@@ -91,10 +85,7 @@ export default function MainNav() {
               </motion.span>
             </Link>
 
-            <nav
-              ref={navRef}
-              className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-12 relative"
-            >
+            <nav ref={navRef} className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-12 relative">
               <motion.div
                 className="absolute bottom-0 h-[2px] bg-white opacity-30 rounded-full"
                 style={{
@@ -127,26 +118,16 @@ export default function MainNav() {
                   {item.dropdown ? (
                     <div className="relative py-2 group cursor-pointer">
                       <span
-                        className={`text-sm tracking-wide font-light transition-colors duration-300 ${
-                          activeItem === item.label
-                            ? "text-white"
-                            : "text-gray-400 group-hover:text-white"
-                        }`}
+                        className={`text-sm tracking-wide font-light transition-colors duration-300 ${activeItem === item.label ? "text-white" : "text-gray-400 group-hover:text-white"
+                          }`}
                       >
                         {item.label}
                       </span>
                       <motion.span
                         className="absolute -bottom-1 left-0 h-[2px] bg-white"
-                        initial={{
-                          width: activeItem === item.label ? "100%" : "0%",
-                        }}
+                        initial={{ width: activeItem === item.label ? "100%" : "0%" }}
                         animate={{
-                          width:
-                            activeItem === item.label
-                              ? "100%"
-                              : hoveredItem === item.label
-                              ? "100%"
-                              : "0%",
+                          width: activeItem === item.label ? "100%" : hoveredItem === item.label ? "100%" : "0%",
                         }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       />
@@ -158,26 +139,16 @@ export default function MainNav() {
                       onClick={() => setActiveItem(item.label)}
                     >
                       <span
-                        className={`text-sm tracking-wide font-light transition-colors duration-300 ${
-                          activeItem === item.label
-                            ? "text-white"
-                            : "text-gray-400 group-hover:text-white"
-                        }`}
+                        className={`text-sm tracking-wide font-light transition-colors duration-300 ${activeItem === item.label ? "text-white" : "text-gray-400 group-hover:text-white"
+                          }`}
                       >
                         {item.label}
                       </span>
                       <motion.span
                         className="absolute -bottom-1 left-0 h-[2px] bg-white"
-                        initial={{
-                          width: activeItem === item.label ? "100%" : "0%",
-                        }}
+                        initial={{ width: activeItem === item.label ? "100%" : "0%" }}
                         animate={{
-                          width:
-                            activeItem === item.label
-                              ? "100%"
-                              : hoveredItem === item.label
-                              ? "100%"
-                              : "0%",
+                          width: activeItem === item.label ? "100%" : hoveredItem === item.label ? "100%" : "0%",
                         }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       />
@@ -202,9 +173,7 @@ export default function MainNav() {
                               className="block px-6 py-3 text-sm text-gray-800 hover:text-white hover:bg-black/80 transition-all duration-200 font-medium relative overflow-hidden group"
                               onClick={() => setActiveItem(item.label)}
                             >
-                              <span className="relative z-10">
-                                {dropdownItem.label}
-                              </span>
+                              <span className="relative z-10">{dropdownItem.label}</span>
                               <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/0 to-black/0 group-hover:from-black/80 group-hover:via-black/80 group-hover:to-black/80 transition-all duration-300"></div>
                             </Link>
                           ))}
@@ -282,9 +251,7 @@ export default function MainNav() {
                   {item.dropdown ? (
                     <div className="py-3 sm:py-4 border-b border-white/10">
                       <div className="flex items-center justify-between">
-                        <span className="font-light tracking-wide text-white text-sm sm:text-base">
-                          {item.label}
-                        </span>
+                        <span className="font-light tracking-wide text-white text-sm sm:text-base">{item.label}</span>
                         <ChevronRight className="h-4 w-4 text-white/70" />
                       </div>
                       <div className="mt-2 pl-4 space-y-2">
@@ -300,13 +267,8 @@ export default function MainNav() {
                       </div>
                     </div>
                   ) : (
-                    <Link
-                      href={item.href}
-                      className="flex items-center justify-between py-3 sm:py-4 border-b border-white/10"
-                    >
-                      <span className="font-light tracking-wide text-white text-sm sm:text-base">
-                        {item.label}
-                      </span>
+                    <Link href={item.href} className="flex items-center justify-between py-3 sm:py-4 border-b border-white/10">
+                      <span className="font-light tracking-wide text-white text-sm sm:text-base">{item.label}</span>
                       <ChevronRight className="h-4 w-4 text-white/70" />
                     </Link>
                   )}
