@@ -17,7 +17,7 @@ const navItems = [
     ]
   },
   { label: "Investing", href: "/" },
-  { label: "Careers", href: "/" },
+  { label: "Careers", href: "/careers" },
   { label: "Gallery", href: "/Gallery" },
 ];
 
