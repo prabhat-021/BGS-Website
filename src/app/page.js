@@ -1,29 +1,22 @@
-import { CenterHeading } from "@/components/addonFunctions/Start-heading";
-import Expanding from "@/components/homePage/expanding";
-import Features from "@/components/homePage/homeMidSection2/Features";
-import JoinUsCard from "@/components/homePage/homeMidSection2/Features/joinus";
-import Overview from "@/components/homePage/homeMidSection2/Overview";
-import Services from "@/components/homePage/homeMidSection2/services";
-import Hero from "@/components/hero-section/hero";
-export default function Home() {
+const Hero = require("@/components/landing-page/hero").default;
+const ScrollMarquee = require("@/components/landing-page/scroll-marquee-v2").default;
+const AboutSection = require("@/components/landing-page/about-section").default;
+const Features = require("@/components/landing-page/features").default;
+const ServicesSection = require("@/components/landing-page/services-section").default;
+const StatsSection = require("@/components/landing-page/stats-section").default;
+const React = require("react");
+
+function Home() {
   return (
-    <div>
-      {/* Section 1 Home Page */}
-          <Hero />
-      <div id="section1" className=" min-h-screen bg-gray-200 ">
-        <div className="md:flex justify-center mb-2 ">
-          <Features />
-          <JoinUsCard />
-        </div>
-        <Services />
-        <Expanding />
-      </div>
-      {/* Section-2 About Page */}
-      <div id="section2" className="bg-gray-200 min-h-screen md:px-10 px-2">
-        <CenterHeading heading="About Us" />
-        <Overview />
-      </div>
-    
-    </div>
+    <main className="flex min-h-screen flex-col bg-[#f8f8f8]">
+      <Hero />
+      {/* <ScrollMarquee /> */}
+      <AboutSection />
+      <Features />
+      <ServicesSection />
+      <StatsSection />
+    </main>
   );
 }
+
+module.exports = Home;

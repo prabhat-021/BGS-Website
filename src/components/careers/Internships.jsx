@@ -12,7 +12,7 @@ const Internships = () => {
 
   return (
     <div className="container  py-10 px-6">
-      <div className="px-6 py-6   border-b-gray-300 border-b-1 ">
+      <div className="px-6 py-6  border-b-gray-300 border-b-1 ">
         <div className="flex w-[80%] gap-4 text-end  px-5 items-baseline">
           <div className="text-lg font-bold w-1/3 text-start">Job Role</div>
           <div className="text-lg font-bold w-1/3">Location</div>
