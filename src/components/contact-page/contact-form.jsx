@@ -160,7 +160,6 @@ export default function ContactForm() {
               </>
             )}
 
-            {/* Success/Error overlay */}
             {submitStatus !== "idle" && (
               <motion.div
                 className={`absolute inset-0 flex items-center justify-center ${

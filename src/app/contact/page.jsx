@@ -1,16 +1,12 @@
-import ContactForm from "@/components/contact/contact-form";
-import ContactMap from "@/components/contact/contact-map";
-import ContactInfo from "@/components/contact/contact-info";
-import MainNav from "@/components/main-nav";
-import Footer from "@/components/footer";
+import ContactForm from "@/components/contact-page/contact-form";
+import ContactMap from "@/components/contact-page/contact-map";
+import ContactInfo from "@/components/contact-page/contact-info";
 
 export default function ContactPage() {
   return (
     <main className="flex min-h-screen flex-col bg-[#f8f8f8]">
-      <MainNav />
 
-      <div className="pt-24 pb-16 flex-grow">
-        {/* Hero Section */}
+      <div className=" flex-grow">
         <div className="relative bg-black text-white py-20 mb-16">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-black/80 z-0"></div>
           <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
@@ -26,23 +22,17 @@ export default function ContactPage() {
         </div>
 
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          {/* Main Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
-            {/* Left Column - Contact Info & Map */}
             <div className="space-y-12">
               <ContactInfo />
-              <ContactMap />
             </div>
-
-            {/* Right Column - Contact Form */}
             <div>
               <ContactForm />
             </div>
           </div>
         </div>
+              <ContactMap />
       </div>
-
-      <Footer />
     </main>
   );
 }

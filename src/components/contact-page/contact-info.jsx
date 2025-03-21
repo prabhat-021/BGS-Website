@@ -72,8 +72,6 @@ export default function ContactInfo() {
           </motion.div>
         ))}
       </div>
-
-      {/* WhatsApp Button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -91,8 +89,6 @@ export default function ContactInfo() {
           <span>Chat on WhatsApp</span>
         </Link>
       </motion.div>
-
-      {/* Social Media */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

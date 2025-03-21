@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 
 export default function ContactMap() {
@@ -11,12 +11,10 @@ export default function ContactMap() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
-      className="rounded-lg overflow-hidden shadow-sm"
+      className="rounded-lg overflow-hidden w-full mt-10 mx-auto shadow-sm"
     >
-      <h2 className="text-2xl md:text-3xl font-light mb-4">Find Us</h2>
 
-      <div className="relative h-[400px] bg-gray-100 rounded-lg overflow-hidden">
-        {/* Google Maps iframe */}
+      <div className="relative h-[600px] w-[100%] bg-gray-100 rounded-lg overflow-hidden">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.0072974893565!2d81.63415617487107!3d21.310727980410082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28e70334ff8821%3A0x21f27a37b122042a!2sNew%20DM%20Tower&#39;s!5e0!3m2!1sen!2sin!4v1737619808718!5m2!1sen!2sin"
           width="100%"
@@ -50,21 +48,6 @@ export default function ContactMap() {
             <div className="w-12 h-12 rounded-full bg-black/10 animate-ping"></div>
           </motion.div>
         )}
-      </div>
-
-      {/* Map Caption */}
-      <div className="mt-4 text-gray-600 text-sm">
-        <p>Visit us at New DM Tower's, India.</p>
-        <p className="mt-2">
-          <a
-            href="https://maps.google.com/?q=New+DM+Tower's"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black underline hover:text-gray-700 transition-colors"
-          >
-            Get directions →
-          </a>
-        </p>
       </div>
     </motion.div>
   )
