@@ -1,13 +1,13 @@
 const MindOverMatter = () => {
   return (
     <section
-      className="bg-cover bg-center bg-no-repeat h-screen flex justify-center items-center bg-fixed px-4"
+      className="bg-cover bg-center bg-no-repeat min-h-screen flex justify-center items-center bg-fixed px-4 py-8 md:py-12"
       style={{ backgroundImage: "url('/careers/image.png')" }}
     >
-      <div className="container mx-auto flex flex-col items-center justify-center h-auto max-w-4xl bg-white text-center p-6 sm:p-10 rounded-lg shadow-lg">
+      <div className="container mx-auto flex flex-col items-center justify-center max-w-screen-md bg-white text-center p-6 sm:p-10 rounded-lg shadow-lg">
         {/* Text Section */}
-        <div className="w-11/12">
-          <h2 className="text-xl sm:text-2xl font-bold mb-4">
+        <div className="w-full sm:w-11/12">
+          <h2 className="text-lg sm:text-2xl font-bold mb-4">
             Mind Over Matter
           </h2>
           <p className="text-sm sm:text-base mb-4">
@@ -19,10 +19,12 @@ const MindOverMatter = () => {
             programme focuses on how summer internships can be made more
             meaningful both for the student and the organization.
           </p>
-          <h2 className="text-lg sm:text-xl font-bold mb-2">We look for...</h2>
+          <h2 className="text-base sm:text-lg font-bold mb-2">
+            We look for...
+          </h2>
 
           {/* Qualities List */}
-          <div className="flex flex-col gap-2 text-left sm:text-center">
+          <div className="text-left sm:text-center text-sm">
             {[
               {
                 title: "Leadership",
@@ -57,15 +59,14 @@ const MindOverMatter = () => {
                 desc: "Developing innovative solutions that align with organizational objectives",
               },
             ].map((item, index) => (
-              <div key={index} className="mb-2">
-                <strong>{item.title}</strong>:{" "}
-                <span className="hidden md:inline">{item.desc}</span>
+              <div key={index} className="p-2 ">
+                <strong>{item.title}</strong>: {item.desc}
               </div>
             ))}
           </div>
 
           {/* Call-to-Action Button */}
-          <button className="mt-4 py-2 px-5 rounded-full bg-gray-200 font-semibold hover:bg-gray-400 transition">
+          <button className="mt-6 py-2 px-5 rounded-full bg-gray-200 font-semibold hover:bg-gray-400 transition">
             Join Us
           </button>
         </div>
