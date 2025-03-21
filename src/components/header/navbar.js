@@ -2,14 +2,23 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
+  {
+    label: "Outsourcing",
+    dropdown: [
+      { label: "ERP & Customized Software", href: "/Outsourcing/ERP" },
+      { label: "Software Testing", href: "/Outsourcing/Testing" }
+    ]
+  },
+  { label: "Investing", href: "/" },
+  { label: "Careers", href: "/" },
+  { label: "Gallery", href: "/" },
 ];
 
 export default function MainNav() {
@@ -17,6 +26,7 @@ export default function MainNav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const navRef = useRef(null);
   const mouseX = useMotionValue(0);
@@ -51,15 +61,21 @@ export default function MainNav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? "py-3 bg-black/90 backdrop-blur-lg border-b border-white/10"
-            : "py-4 bg-black border-b border-white/5"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
+          ? "py-3 bg-black/90 backdrop-blur-lg border-b border-white/10"
+          : "py-4 bg-black border-b border-white/5"
+          }`}
       >
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center group">
+              <Image
+                src="/navlogo.png"
+                alt="Bridge Group Logo"
+                width={40}
+                height={40}
+                className="mr-3"
+              />
               <motion.span
                 className="text-2xl font-extralight text-white tracking-wider"
                 whileHover={{ x: 3 }}
@@ -87,30 +103,85 @@ export default function MainNav() {
               />
 
               {navItems.map((item) => (
-                <Link
+                <div
                   key={item.label}
-                  href={item.href}
-                  className="relative py-2 group"
-                  onClick={() => setActiveItem(item.label)}
-                  onMouseEnter={() => setHoveredItem(item.label)}
-                  onMouseLeave={() => setHoveredItem(null)}
+                  className="relative"
+                  onMouseEnter={() => {
+                    setHoveredItem(item.label);
+                    if (item.dropdown) setShowDropdown(true);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredItem(null);
+                    if (item.dropdown) setShowDropdown(false);
+                  }}
                 >
-                  <span
-                    className={`text-sm tracking-wide font-light transition-colors duration-300 ${
-                      activeItem === item.label ? "text-white" : "text-gray-400 group-hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </span>
-                  <motion.span
-                    className="absolute -bottom-1 left-0 h-[2px] bg-white"
-                    initial={{ width: activeItem === item.label ? "100%" : "0%" }}
-                    animate={{
-                      width: activeItem === item.label ? "100%" : hoveredItem === item.label ? "100%" : "0%",
-                    }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </Link>
+                  {item.dropdown ? (
+                    <div className="relative py-2 group cursor-pointer">
+                      <span
+                        className={`text-sm tracking-wide font-light transition-colors duration-300 ${activeItem === item.label ? "text-white" : "text-gray-400 group-hover:text-white"
+                          }`}
+                      >
+                        {item.label}
+                      </span>
+                      <motion.span
+                        className="absolute -bottom-1 left-0 h-[2px] bg-white"
+                        initial={{ width: activeItem === item.label ? "100%" : "0%" }}
+                        animate={{
+                          width: activeItem === item.label ? "100%" : hoveredItem === item.label ? "100%" : "0%",
+                        }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      />
+                    </div>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="relative py-2 group"
+                      onClick={() => setActiveItem(item.label)}
+                    >
+                      <span
+                        className={`text-sm tracking-wide font-light transition-colors duration-300 ${activeItem === item.label ? "text-white" : "text-gray-400 group-hover:text-white"
+                          }`}
+                      >
+                        {item.label}
+                      </span>
+                      <motion.span
+                        className="absolute -bottom-1 left-0 h-[2px] bg-white"
+                        initial={{ width: activeItem === item.label ? "100%" : "0%" }}
+                        animate={{
+                          width: activeItem === item.label ? "100%" : hoveredItem === item.label ? "100%" : "0%",
+                        }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      />
+                    </Link>
+                  )}
+
+                  {item.dropdown && (
+                    <AnimatePresence>
+                      {showDropdown && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-[calc(100%+10px)] left-0 w-56 bg-[#C9C9C9]/95 backdrop-blur-xl rounded-lg shadow-2xl py-2 border border-white/20"
+                        >
+                          <div className="absolute -top-2 left-6 w-4 h-4 bg-[#C9C9C9]/95 backdrop-blur-xl transform rotate-45 border-t border-l border-white/20"></div>
+                          {item.dropdown.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.label}
+                              href={dropdownItem.href}
+                              className="block px-6 py-3 text-sm text-gray-800 hover:text-white hover:bg-black/80 transition-all duration-200 font-medium relative overflow-hidden group"
+                              onClick={() => setActiveItem(item.label)}
+                            >
+                              <span className="relative z-10">{dropdownItem.label}</span>
+                              <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/0 to-black/0 group-hover:from-black/80 group-hover:via-black/80 group-hover:to-black/80 transition-all duration-300"></div>
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
               ))}
 
               <Link href="/contact">
