@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -32,14 +32,27 @@ const slides = [
 
 export default function ERPPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
   const nextSlide = () => {
+    setIsAutoPlaying(false)
     setCurrentSlide((prev) => (prev + 1) % slides.length)
   }
 
   const previousSlide = () => {
+    setIsAutoPlaying(false)
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
   }
+
+  useEffect(() => {
+    let interval
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length)
+      }, 5000) // Change slide every 5 seconds
+    }
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
 
   return (
     <main className="bg-gradient-to-b from-gray-50 to-white">
@@ -66,27 +79,16 @@ export default function ERPPage() {
       {/* Hero Slider Section */}
       <section className="min-h-[80vh] flex items-center py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto w-full">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-5xl font-bold text-gray-900">{slides[currentSlide].title}</h1>
-            <div className="flex items-center gap-4">
-              <button onClick={previousSlide} className="text-blue-600 hover:text-blue-800" aria-label="Previous slide">
-                <ArrowLeft className="w-6 h-6" />
-              </button>
-              <button onClick={nextSlide} className="text-blue-600 hover:text-blue-800" aria-label="Next slide">
-                <ArrowRight className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-8">
+              <h1 className="text-5xl font-bold text-gray-900">{slides[currentSlide].title}</h1>
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">{slides[currentSlide].description}</p>
                 <p className="text-lg text-gray-700 leading-relaxed">{slides[currentSlide].additionalText}</p>
               </div>
             </div>
 
-            <div className="relative">
+            <div className="space-y-8">
               <div className="relative h-[300px] w-full">
                 <Image
                   src={slides[currentSlide].image || "/placeholder.svg"}
@@ -95,6 +97,14 @@ export default function ERPPage() {
                   className="object-contain rounded-lg"
                   priority
                 />
+              </div>
+              <div className="flex justify-center items-center gap-4">
+                <button onClick={previousSlide} className="text-blue-600 hover:text-blue-800" aria-label="Previous slide">
+                  <ArrowLeft className="w-6 h-6" />
+                </button>
+                <button onClick={nextSlide} className="text-blue-600 hover:text-blue-800" aria-label="Next slide">
+                  <ArrowRight className="w-6 h-6" />
+                </button>
               </div>
             </div>
           </div>
@@ -124,7 +134,7 @@ export default function ERPPage() {
                 </p>
               </div>
             </div>
-            <div className="relative h-[400px] w-full">
+            <div className="relative h-[300px] w-full">
               <Image
                 src="/outsourcing/erp1.png"
                 alt="ERP History Illustration"
