@@ -7,8 +7,8 @@ const About = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   const timelineData = [
-    { year: "2022", content: "The only Microsoft Cloud Business" },
-    { year: "2021", content: "Expanded cloud services and solutions" },
+    { year: "2022", content: "The only Microsoft " },
+    { year: "2021", content: "Expanded cloud services" },
     { year: "2018", content: "Digital transformation initiatives" },
     { year: "2016", content: "Enhanced Microsoft partnership" },
     { year: "2015", content: "Business growth milestone" },
