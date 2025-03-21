@@ -11,34 +11,40 @@ const Internships = () => {
   };
 
   return (
-    <div className="container  py-10 px-6">
-      <div className="px-6 py-6  border-b-gray-300 border-b-1 ">
-        <div className="flex w-[80%] gap-4 text-end  px-5 items-baseline">
-          <div className="text-lg font-bold w-1/3 text-start">Job Role</div>
-          <div className="text-lg font-bold w-1/3">Location</div>
-          <div className="text-lg font-bold w-1/3">Duration</div>
+    <div className="container py-10 px-4 sm:px-6">
+      <div className="px-4 sm:px-6 py-6 border-b-gray-300 border-b">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:w-[80%] text-end px-5 items-baseline">
+          <div className="text-lg font-bold sm:w-1/3 text-start">Job Role</div>
+          <div className="text-lg font-bold sm:w-1/3 hidden md:block">
+            Location
+          </div>
+          <div className="text-lg font-bold sm:w-1/3 hidden md:block">
+            Duration
+          </div>
         </div>
       </div>
-      <div className=" mx-auto  pb-6 rounded-lg ">
+      <div className="mx-auto pb-6 rounded-lg">
         {internshipsData.map((section, index) => (
           <div
             key={index}
             className="border-b border-gray-300 hover:bg-gray-200"
           >
             <div
-              className="flex justify-between items-center py-4 cursor-pointer  px-4 rounded-lg"
+              className="flex flex-col sm:flex-row justify-between items-center py-4 cursor-pointer px-4 rounded-lg"
               onClick={() => handleExpandToggle(index)}
             >
-              <div className="flex gap-4 w-[80%]  text-end">
-                <div className="text-lg font-bold w-1/3 text-start">
-                  {section.department} Internship/Jobs
+              <div className="flex flex-col sm:flex-row gap-4 sm:w-[80%] text-end">
+                <div className="text-lg font-bold sm:w-1/3 text-start">
+                  {section.department} Internship
                 </div>
-                <div className="text-lg font-bold w-1/3">
+                <div className="text-lg font-bold sm:w-1/3 hidden md:block">
                   {section.location}
                 </div>
-                <div className="text-lg font-bold w-1/3">Full Time</div>
+                <div className="text-lg font-bold sm:w-1/3 hidden md:block">
+                  Full Time
+                </div>
               </div>
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-500 text-white">
+              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-500 text-white mt-4 sm:mt-0">
                 {expandedIndex === index ? (
                   <IconArrowUp stroke={2} />
                 ) : (
@@ -54,8 +60,14 @@ const Internships = () => {
                 opacity: expandedIndex === index ? 1 : 0,
               }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="overflow-hidden px-4  py-4"
+              className="overflow-hidden px-4 py-4"
             >
+              <p className="md:hidden">
+                <strong>Location:</strong> {section.location}
+              </p>
+              <p className="md:hidden">
+                <strong>Duration:</strong> Full Time
+              </p>
               <p>
                 <strong>Eligibility:</strong> {section.eligibilityCriteria}
               </p>
