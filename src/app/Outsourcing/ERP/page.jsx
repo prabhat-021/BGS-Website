@@ -51,15 +51,13 @@ export default function ERPPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="pt-16"
+            className="pt-42"
           >
             <h1 className="text-6xl font-bold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900">
               Our expertise in ERP solutions
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              With years of experience in implementing and optimizing ERP systems, our team of experts delivers comprehensive solutions
-              that streamline operations and drive business growth. We combine technical excellence with deep industry knowledge
-              to provide tailored ERP services that meet your specific needs.
+              Our seasoned team excels in ERP system implementation and optimization, enhancing operational efficiency and fostering business expansion through tailored solutions.
             </p>
           </motion.div>
         </div>
