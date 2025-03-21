@@ -1,218 +1,187 @@
 "use client";
-import NextLink from "next/link";
-import {
-  Box,
-  Container,
-  Stack,
-  Button,
-  IconButton,
-  Drawer,
-  useMediaQuery,
-  useTheme,
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
-} from '@mui/material';
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import MenuIcon from '@mui/icons-material/Menu';
-const navlogo = '/navlogo.png';
 
-export default function Navbar() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [mobileOpen, setMobileOpen] = useState(false);
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+];
+
+export default function MainNav() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [activeItem, setActiveItem] = useState("Home");
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const navRef = useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 300 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-
-      // Show navbar when scrolling up or at the top
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
-      setPrevScrollPos(currentScrollPos);
-      setScrolled(currentScrollPos > 50);
+      setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (navRef.current) {
+        const rect = navRef.current.getBoundingClientRect();
+        mouseX.set(e.clientX - rect.left);
+        mouseY.set(e.clientY - rect.top);
+      }
+    };
 
-  const navItems = [
-    { label: 'Home', href: '/Home' },
-    { label: 'Services', href: '/services' },
-    { label: 'About', href: '/about' },
-  ];
-
-  const drawer = (
-    <Box sx={{ width: 250, p: 2 }}>
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item.label} component={NextLink} href={item.href} sx={{ py: 2 }}>
-            <ListItemText
-              primary={item.label}
-              sx={{
-                color: '#1C1C1C',
-                '& .MuiTypography-root': {
-                  fontSize: '16px',
-                  fontWeight: 500,
-                }
-              }}
-            />
-          </ListItem>
-        ))}
-        <Divider sx={{ my: 2 }} />
-        <ListItem component={NextLink} href="/contact" sx={{ py: 2 }}>
-          <Button
-            fullWidth
-            variant="contained"
-            sx={{
-              backgroundColor: '#1C1C1C',
-              color: 'white',
-              borderRadius: '25px',
-              textTransform: 'none',
-              fontSize: '16px',
-              '&:hover': {
-                backgroundColor: '#333',
-              }
-            }}
-          >
-            Contact Us
-          </Button>
-        </ListItem>
-      </List>
-    </Box>
-  );
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        mt: 3,
-        position: 'fixed',
-        top: 0,
-        left: '50%',
-        transform: `translateX(-50%) translateY(${visible ? '0' : '-100%'})`,
-        zIndex: 1000,
-        transition: 'transform 0.3s ease-in-out',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          py: 2,
-          px: 4,
-          backgroundColor: visible ? '#3A3A3A' : 'transparent',
-          borderRadius: '50px',
-          transition: 'all 0.3s ease',
-        }}
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "py-3 bg-black/90 backdrop-blur-lg border-b border-white/10"
+            : "py-4 bg-black border-b border-white/5"
+        }`}
       >
-        <NextLink href="/" passHref style={{ textDecoration: 'none' }}>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Image
-              src={navlogo}
-              alt="Studio Logo"
-              width={isMobile ? 50 : 60}
-              height={isMobile ? 16 : 20}
-              style={{
-                objectFit: 'contain',
-                filter: visible ? 'invert(1)' : 'none'
-              }}
-            />
-          </Stack>
-        </NextLink>
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center group">
+              <motion.span
+                className="text-2xl font-extralight text-white tracking-wider"
+                whileHover={{ x: 3 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                BRIDGE GROUP
+              </motion.span>
+            </Link>
 
-        {isMobile ? (
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ color: visible ? 'white' : '#1C1C1C' }}
-          >
-            <MenuIcon />
-          </IconButton>
-        ) : (
-          <Stack direction="row" spacing={4} alignItems="center">
-            {navItems.map((item) => (
-              <NextLink key={item.label} href={item.href} passHref style={{ textDecoration: 'none' }}>
-                <Button
-                  sx={{
-                    color: visible ? 'white' : '#1C1C1C',
-                    textTransform: 'none',
-                    fontSize: '16px',
-                    position: 'relative',
-                    '&:hover': {
-                      backgroundColor: 'transparent',
-                      opacity: 0.8,
-                      '&::after': {
-                        transform: 'scaleX(1)',
-                      },
-                    },
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      left: 0,
-                      bottom: -2,
-                      width: '100%',
-                      height: '2px',
-                      backgroundColor: visible ? 'white' : '#1C1C1C',
-                      transform: 'scaleX(0)',
-                      transition: 'transform 0.3s ease',
-                    },
-                  }}
+            <nav ref={navRef} className="hidden md:flex items-center space-x-12 relative">
+              <motion.div
+                className="absolute bottom-0 h-[2px] bg-white opacity-30 rounded-full"
+                style={{
+                  width: hoveredItem ? "24px" : "0px",
+                  left: springX,
+                  top: springY,
+                  translateX: "-50%",
+                  translateY: "8px",
+                  opacity: hoveredItem ? 0.5 : 0,
+                }}
+                transition={{
+                  width: { duration: 0.2 },
+                  opacity: { duration: 0.2 },
+                }}
+              />
+
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="relative py-2 group"
+                  onClick={() => setActiveItem(item.label)}
+                  onMouseEnter={() => setHoveredItem(item.label)}
+                  onMouseLeave={() => setHoveredItem(null)}
                 >
-                  {item.label}
-                </Button>
-              </NextLink>
-            ))}
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: visible ? 'white' : '#1C1C1C',
-                color: visible ? '#1C1C1C' : 'white',
-                borderRadius: '25px',
-                px: 3,
-                py: 1,
-                textTransform: 'none',
-                fontSize: '16px',
-                '&:hover': {
-                  backgroundColor: visible ? 'white' : '#1C1C1C',
-                  opacity: 0.9,
-                }
-              }}
-              endIcon={<span>→</span>}
-            >
-              Contact Us
-            </Button>
-          </Stack>
-        )}
+                  <span
+                    className={`text-sm tracking-wide font-light transition-colors duration-300 ${
+                      activeItem === item.label ? "text-white" : "text-gray-400 group-hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                  <motion.span
+                    className="absolute -bottom-1 left-0 h-[2px] bg-white"
+                    initial={{ width: activeItem === item.label ? "100%" : "0%" }}
+                    animate={{
+                      width: activeItem === item.label ? "100%" : hoveredItem === item.label ? "100%" : "0%",
+                    }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  />
+                </Link>
+              ))}
 
-        <Drawer
-          variant="temporary"
-          anchor="right"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: 'block', md: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-    </Container>
+              <Link href="/contact">
+                <motion.button
+                  className="group relative overflow-hidden bg-white text-black rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 flex items-center"
+                  whileHover="hover"
+                  whileTap="tap"
+                  variants={{ hover: {}, tap: { scale: 0.97 } }}
+                >
+                  <motion.span
+                    className="relative z-10 flex items-center"
+                    variants={{ hover: { x: 3 } }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    Contact Us
+                    <motion.div
+                      className="ml-1"
+                      variants={{ hover: { x: 2, opacity: 1 } }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </motion.div>
+                  </motion.span>
+                </motion.button>
+              </Link>
+            </nav>
+
+            <motion.button
+              className="md:hidden text-white p-2 rounded-full"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              whileTap={{ scale: 0.9 }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={mobileMenuOpen ? "close" : "open"}
+                  initial={{ opacity: 0, rotate: mobileMenuOpen ? -90 : 90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: mobileMenuOpen ? 90 : -90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
+          </div>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+            className="fixed top-[65px] left-0 right-0 z-40 md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+          >
+            <div className="px-6 py-6 space-y-1">
+              {navItems.map((item, index) => (
+                <motion.div key={item.label} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
+                  <Link href={item.href} className="flex items-center justify-between py-4 border-b border-white/10">
+                    <span className="font-light tracking-wide">{item.label}</span>
+                    <ChevronRight className="h-4 w-4 opacity-50" />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
