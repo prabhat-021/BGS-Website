@@ -18,7 +18,7 @@ const navItems = [
   },
   { label: "Investing", href: "/" },
   { label: "Careers", href: "/" },
-  { label: "Gallery", href: "/" },
+  { label: "Gallery", href: "/Gallery" },
 ];
 
 export default function MainNav() {
