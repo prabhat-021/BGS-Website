@@ -16,7 +16,14 @@ const navItems = [
       { label: "Software Testing", href: "/Outsourcing/Testing" }
     ]
   },
-  { label: "Investing", href: "/" },
+  {
+    label: "Investing",
+    dropdown: [
+      { label: "Management", href: "/investing/Management" },
+      { label: "MutualFund", href: "/investing/MutualFund" },
+      { label: "Pension", href: "/investing/Pension" }
+    ]
+  },
   { label: "Careers", href: "/careers" },
   { label: "Gallery", href: "/Gallery" },
 ];
@@ -26,7 +33,7 @@ export default function MainNav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
   const [hoveredItem, setHoveredItem] = useState(null);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const navRef = useRef(null);
   const mouseX = useMotionValue(0);
@@ -108,11 +115,11 @@ export default function MainNav() {
                   className="relative"
                   onMouseEnter={() => {
                     setHoveredItem(item.label);
-                    if (item.dropdown) setShowDropdown(true);
+                    if (item.dropdown) setActiveDropdown(item.label);
                   }}
                   onMouseLeave={() => {
                     setHoveredItem(null);
-                    if (item.dropdown) setShowDropdown(false);
+                    if (item.dropdown) setActiveDropdown(null);
                   }}
                 >
                   {item.dropdown ? (
@@ -157,7 +164,7 @@ export default function MainNav() {
 
                   {item.dropdown && (
                     <AnimatePresence>
-                      {showDropdown && (
+                      {activeDropdown === item.label && (
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
