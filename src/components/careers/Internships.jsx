@@ -11,14 +11,14 @@ const Internships = () => {
   };
 
   return (
-    <div className="container py-10 px-4 sm:px-6">
+    <div className="w-full py-10 px-4 sm:px-6">
       <div className="px-4 sm:px-6 py-6 border-b-gray-300 border-b">
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:w-[80%] text-end px-5 items-baseline">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:w-[81%] text-end px-5 items-baseline text-gray-500">
           <div className="text-lg font-bold sm:w-1/3 text-start">Job Role</div>
-          <div className="text-lg font-bold sm:w-1/3 hidden md:block">
+          <div className="text-lg font-bold sm:w-1/3 hidden md:block pr-2">
             Location
           </div>
-          <div className="text-lg font-bold sm:w-1/3 hidden md:block">
+          <div className="text-lg font-bold sm:w-1/3 hidden md:block ">
             Duration
           </div>
         </div>
