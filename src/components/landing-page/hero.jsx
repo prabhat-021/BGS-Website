@@ -9,7 +9,6 @@ export default function Hero() {
   const [scrollY, setScrollY] = useState(0)
   const heroRef = useRef(null)
 
-  // Track scroll position for parallax effect
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
@@ -28,7 +27,6 @@ export default function Hero() {
           ref={heroRef}
           className="relative min-h-screen px-6 md:px-12 pt-6 overflow-hidden flex flex-col justify-center"
         >
-          {/* Parallax background elements */}
           <div
             className="absolute right-0 top-0 h-[300px] w-[300px] animate-pulse rounded-full bg-gradient-to-br from-pink-400 via-orange-300 to-yellow-200 opacity-70 blur-3xl"
             style={{

@@ -5,7 +5,7 @@ import { useMouseFollower } from "@/hooks/use-mouse-follower";
 
 export default function MouseFollower({
   normalSize = "30px",
-  hoverSize = "80px",
+  hoverSize = "50px",
   color = "white",
   mixBlendMode = "difference",
   pulseOnHover = true,

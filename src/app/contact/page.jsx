@@ -4,7 +4,7 @@ import ContactInfo from "@/components/contact-page/contact-info";
 
 export default function ContactPage() {
   return (
-    <main className="flex min-h-screen flex-col bg-[#f8f8f8]">
+    <main className="flex mb-10 min-h-screen flex-col bg-[#f8f8f8]">
 
       <div className=" flex-grow">
         <div className="relative bg-black text-white py-20 mb-16">

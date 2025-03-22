@@ -11,12 +11,12 @@ export default function ContactMap() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
-      className="rounded-lg overflow-hidden w-full mt-10 mx-auto shadow-sm"
+      className="rounded-lg overflow-hidden w-[85%] flex justify-center items-center mt-10 mx-auto shadow-sm"
     >
 
-      <div className="relative h-[600px] w-[100%] bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative h-[500px] w-[100%] bg-gray-100 rounded-lg overflow-hidden">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.0072974893565!2d81.63415617487107!3d21.310727980410082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28e70334ff8821%3A0x21f27a37b122042a!2sNew%20DM%20Tower&#39;s!5e0!3m2!1sen!2sin!4v1737619808718!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.720953416682!2d77.05907677512326!3d28.45782707576068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19002336e493%3A0x902dbbb8acebec88!2sBridge%20Group%20Solutions!5e0!3m2!1sen!2sin!4v1742561160662!5m2!1sen!2sin"
           width="100%"
           height="100%"
           title="Our Location"
