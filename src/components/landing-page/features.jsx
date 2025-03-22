@@ -24,7 +24,6 @@ export default function Features() {
           </p>
         </motion.div>
 
-        {/* Compact Bento Grid */}
         <BentoGrid className="max-w-4xl mx-auto">
           {items.map((item, i) => (
             <BentoGridItem
@@ -209,7 +208,6 @@ const JoinTeam = () => {
   )
 }
 
-// Compact structured grid items
 const items = [
   {
     title: "Personalized Solutions",

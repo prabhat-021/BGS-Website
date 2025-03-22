@@ -9,11 +9,7 @@ import { useMouseFollower } from "@/hooks/use-mouse-follower"
 export default function Footer() {
   const [scrollY, setScrollY] = useState(0)
   const footerRef = useRef(null)
-
-  // Use the mouse follower hook but don't use the hover detection
   const { mouseX, mouseY } = useMouseFollower({ hoverDetection: false })
-
-  // Track scroll position for parallax effect
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
@@ -22,8 +18,6 @@ export default function Footer() {
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  // Create a motion value for the footer's position in the viewport
   const [footerInView, setFooterInView] = useState(false)
 
   useEffect(() => {
@@ -45,7 +39,6 @@ export default function Footer() {
     }
   }, [])
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -64,7 +57,6 @@ export default function Footer() {
 
   return (
     <footer ref={footerRef} className="relative w-full bg-black text-white overflow-hidden">
-      {/* Background elements */}
       <div
         className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-to-br from-pink-500 via-orange-400 to-yellow-300 opacity-30 blur-3xl"
         style={{
@@ -72,8 +64,6 @@ export default function Footer() {
         }}
         aria-hidden="true"
       />
-
-      {/* Top CTA Section */}
       <div className="py-20 border-b border-white/10">
         <motion.div
           className="container mx-auto px-6 md:px-12 text-center"
@@ -110,7 +100,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
             {/* Logo and Description */}
             <motion.div variants={itemVariants} className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl font-light">OPUS</h2>
+              <h2 className="text-4xl font-light">BRIDGE GROUP SOLUITONS</h2>
               <p className="text-gray-400 max-w-md text-sm leading-relaxed">
                 We help businesses succeed in the digital space by creating beautiful web experiences that combine
                 cutting-edge technology and a deep understanding of what your users really need.
@@ -156,15 +146,13 @@ export default function Footer() {
                 </Link>
               </div>
             </motion.div>
-
-            {/* Empty space for layout */}
             <div className="hidden lg:block lg:col-span-2"></div>
 
             {/* Contact Info */}
             <motion.div variants={itemVariants} className="lg:col-span-5 space-y-6 md:text-right">
               <p className="text-gray-400 text-sm">You can also email us at:</p>
               <motion.p className="text-xl font-light" whileHover={{ scale: 1.02 }}>
-                contact@opus.com
+                contact@Bridgegroupsolutions.com
               </motion.p>
 
               {/* Navigation */}
@@ -200,7 +188,7 @@ export default function Footer() {
             variants={itemVariants}
             className="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-white/10"
           >
-            <p className="text-gray-500 text-xs">©{new Date().getFullYear()} Opus. All Rights Reserved.</p>
+            <p className="text-gray-500 text-xs">©{new Date().getFullYear()} Bridgegroupsolutions. All Rights Reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               {["Privacy Policy", "Terms of Service"].map((item) => (
                 <Link key={item} href="#" className="relative group">

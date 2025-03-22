@@ -17,7 +17,7 @@ export default function AboutSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-tight">
-            We are trendsetters in the fashion industry, blending innovative design with a passion for style.
+          We craft digital experiences that transform brands and grow businesses in the digital landscape.
           </h2>
         </motion.div>
 
@@ -38,7 +38,8 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-xl md:text-2xl font-light">
-              We craft exceptional apparel and accessories, merging cutting-edge design with timeless elegance.
+            We design and develop innovative websites, applications, and digital solutions that elevate your online
+            presence and drive results.
             </p>
           </motion.div>
 
@@ -60,7 +61,7 @@ export default function AboutSection() {
                   </defs>
                   <text className="text-[5px] md:text-[6px] uppercase tracking-[0.3em] fill-black font-light">
                     <textPath href="#circlePath" startOffset="0%">
-                      Begin your story • Begin your story • Begin your story •
+                    Digital innovation • Web excellence • Creative solutions •
                     </textPath>
                   </text>
                 </svg>
